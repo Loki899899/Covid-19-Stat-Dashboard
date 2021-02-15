@@ -1,3 +1,9 @@
+#A DashBoard to track status of Covid-19 in India
+Created with React.js 
+Different UI supports for PC and mobile device
+Fetch Apis working
+onMouseHover functionality still needs to be added
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
