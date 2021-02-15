@@ -54,6 +54,9 @@ function CovidData() {
     } else {
         return (
             <div className="main-container">
+                <div className="left-container">
+                    <h2>INDIA COVID-19 Tracker</h2>
+                    <h5>Lets all pray to make out Earth Covid-19 free soon, Stay Safe and do TheLocate</h5>                
                 <div className="chart-and-table">
                     <div className="stat-charts">
                         <div className="donut-chart">
@@ -63,10 +66,14 @@ function CovidData() {
                             <LineGraph data={covidData}/>
                         </div>
                     </div>
+                    </div>
                     <div className="state-datas">
                         <StateTable data={covidData} />
                     </div>
                 </div>
+                <div className="right-container">
+                    <h2>INDIA MAP</h2>
+                    <h4>HOVER OVER A STATE FOR MORE DETAILS</h4>
                 <div className="map-data">
                 <div className="text-on-map">
                         Last Updated on
@@ -78,6 +85,7 @@ function CovidData() {
                         <VectorMap {...India} />
                     </div>                    
                 </div>
+                </div>                
             </div>
         );
     }

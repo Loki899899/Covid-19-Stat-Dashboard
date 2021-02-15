@@ -39,7 +39,7 @@
 }
 
 body {
-  background-color: cadetblue;
+  background-color: skyblue;
 }
 .stat-charts, .state-datas, .map-data {
   margin: 2%;
@@ -74,6 +74,9 @@ body {
 .stat-charts, .databoxes {
   display: flex;
 }
+.left-container, .right-container {
+  display: block;
+}
 .chart-and-table {
   width:50vw;
   padding-left: 1%;
@@ -85,13 +88,15 @@ body {
 .map-data {
   width: 45vw;
   height: fit-content;
+  position: relative;
 }
 .text-on-map {
+  font-size: 100%;
   font-weight: bold;
   color: yellowgreen;
   position: absolute;
   top: 26%;
-  left:80%
+  left:55%
 }
 .confirmed-box, .active-box, .recovering-box, .deceased-box {
   font-size: 100%;
