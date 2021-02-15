@@ -56,7 +56,7 @@ function CovidData() {
                             <DonutChart data={covidData} />
                         </div>
                         <div className="linegraph">
-                            <LineGraph />
+                            <LineGraph data={covidData}/>
                         </div>
                     </div>
                     <div className="state-datas">
