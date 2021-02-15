@@ -4,14 +4,16 @@ import StateTable from "./StateTable";
 import DonutChart from './DonutChart';
 import LineGraph from './LineChart';
 import Databoxes from './Databoxes';
-import India from './india.json';
+import India from './india.json';  
 
+//function to retrieve the data from apis
 function CovidData() {
     const [covidData, setCovidData] = useState([]);
     const [stateData, setstateData] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null);
 
+    //fetch the data for the state daily
     useEffect(() => {
             fetch("https://api.covid19india.org/states_daily.json")
             .then(stateDataRes => stateDataRes.json())
@@ -27,6 +29,7 @@ function CovidData() {
             })
     },[stateData.length]);
 
+    //fetch the second covid api data 
     useEffect(() => {
         fetch("https://api.covid19india.org/data.json")
             .then(covidDatajson => covidDatajson.json())

@@ -46,10 +46,13 @@ body {
   background-color: white;
   border-radius: 2vw;
 }
+.state-datas {
+  height: 44%;
+  overflow: auto;
+}
 /* donut height and width  */
 .donut-chart {
-  height: 20vh;
-  width: 20vw;
+  width: 50%;
   padding-left: 5%;
 }
 .linegraph {
@@ -76,11 +79,12 @@ body {
   padding-left: 1%;
 }
 .map {
-  padding-left: 8%; 
-  width:40vw;
+  width:90%;
+  padding: 5%
 }
 .map-data {
   width: 45vw;
+  height: fit-content;
 }
 .confirmed-box, .active-box, .recovering-box, .deceased-box {
   margin-left: 1%;
@@ -114,14 +118,27 @@ body {
   padding: 1%;
   padding-right: 2%;
 }
+.databoxes {
+  font-size: 75%;
+  height: 10%;
+  text-align: center;
+  padding: 1%;
+  padding-right: 2%;
+}
 .main-container {
   display: flex;
+  height: 100%;
 }
 th {
   color: red;
-  padding: 2vh;
+  padding: 1vw;
+  padding-right: 2vw;
 }
 @media only screen and (min-width: 1600px){
+  th {
+    color: red;
+    padding: 2vh;
+  }
   .donut-chart{
     height: 10vw;
     width: 19vw;
@@ -135,34 +152,49 @@ th {
 }
 /* donut configs for mobile devices */
 @media only screen and (max-width: 600px) {
+  .chart-and-table {
+    width: 98%;
+  }
   .donut-chart{
-    height: 30vw;
-    width: 90vw;
+    height: 30%;
+    width: 90%;
   }
   .linegraph {
-    height: 30vw;
-    width: 90vw;
-    margin-top: 12%;
-    margin-bottom: 10%;
+    height: 30%;
+    width: 90%;
+    margin:15% 5% 0% 2%;
   }
   .center-text {
-    font-size: 1.2em;
+    font-size: 100%;
     position: absolute;
     top: 36%;
-    left: 12.5%;
+    left: 9%;
   }
   .stat-charts {
     display: block;
+    width: 96%;
+    height: 44vh;
   }
   th {
     font-size: 0.78em;
     color: red;
     padding: 0.7vw;
   }
+  .main-container {
+    display: block;
+    height: 100%;
+  }
+  .map-data {
+    width: 95%;
+    height: 100%;
+  }
 }
 .confirmed {
   font-weight:bold;
   font-size: 1rem;
+}
+table {
+  font-size: 80%;
 }
 /* .donut-inner {
   margin-top: -32%;

@@ -4,19 +4,20 @@ import { useEffect, useState } from 'react';
 function DonutChart(props) {
     const [data, setData] = useState([]);
     useEffect(()=>{
-        if(props.data.length<1) {
-            //console.log("empty here")
-        }
-        else {
+        if(!(props.data.length<1)) {
             setData(
                 {
                     labels: [
-                        `Active ${props.data.cases_time_series[props.data.cases_time_series.length-1].totalconfirmed}`,
-                        `Deceased ${props.data.cases_time_series[props.data.cases_time_series.length-1].totaldeceased}`,
-                        `Recovered ${props.data.cases_time_series[props.data.cases_time_series.length-1].totalrecovered}`
+                        `Active ${props.data.statewise[0].active}`,
+                        `Deceased ${props.data.statewise[0].deaths}`,
+                        `Recovered ${props.data.statewise[0].recovered}`
                     ], 
                     datasets: [{
-                        data: [9213, 999, 31233],
+                        data: [
+                            props.data.statewise[0].active,
+                            props.data.statewise[0].deaths,
+                            props.data.statewise[0].recovered
+                        ],
                         backgroundColor: [
                         "#0066ff", 
                         "#adad85", 
@@ -30,12 +31,10 @@ function DonutChart(props) {
                     }]
                 }            
             );
-            //console.log("props data ");
-            //console.log(props.data);
         }
     },[props.data]);
     if(props.data.length<1) {
-        return (<div>Wait..</div>);      
+        return (<div>Loading...</div>);      
     }
     else {
         return (
@@ -43,7 +42,8 @@ function DonutChart(props) {
                 <Doughnut data={data} 
                  legend= {{position: "right"}} 
                  options={{cutoutPercentage: 85, maintainAspectRatio: false}}/>
-                <div className="center-text">
+                <div className="center-text"> 
+                {/* center text for the donut graph */}
                     <span className="confirmed">
                         {parseInt(props.data.cases_time_series[props.data.cases_time_series.length-1].totalconfirmed)+
                          parseInt(props.data.cases_time_series[props.data.cases_time_series.length-1].totaldeceased)+
@@ -57,25 +57,3 @@ function DonutChart(props) {
     }
 }    
 export default DonutChart;
-
-/*            <div className="stat-screen">
-                <div className="toptext1"></div>
-                <div className="donut-stats">
-                    <DonutChart data={[
-                        { label: "Active", value: 20 },
-                        { label: "Deceased", value: 10 },
-                        { label: "Recovered", value: 70 }]}
-                        innerRadius={0.35}
-                        outerRadius={0.4}
-                        startAngle={270}
-                        onMouseEnter={() => { }}
-                        formatValues={(values) => `${values}`}
-                        colors={["#0066ff", "#adad85", "#00ff00"]} 
-                        selectedOffset={0}
-                        toggledOffset={0}
-                        onMouseEnter={() => 100000}/>
-                </div>
-                <div className="linegraph"></div>
-            </div>
-            <div className="state-stats"></div>
-            <div class="map-stats"></div> */

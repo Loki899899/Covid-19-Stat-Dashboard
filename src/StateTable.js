@@ -2,14 +2,9 @@ import {useEffect, useState} from 'react';
 const StateTable = props => {    
     // console.log("dailyconf: "+props.data);
 
-    const [confirmed, setConfirmed] = useState(null);
-    //const [active, setActive] = useState(states);
-    const [recovered, setRecovered] = useState(null)
-    const [deceased, setDeceased] = useState(null);    
-    Object.keys(props.data).map((key) => {
-        //console.log("Key "+key);
-        //console.log(states[key]);
-    })
+    // const [confirmed, setConfirmed] = useState(null);
+    // const [recovered, setRecovered] = useState(null)
+    // const [deceased, setDeceased] = useState(null);    
 
     //for daily stats
     // useEffect(() => {
@@ -25,18 +20,19 @@ const StateTable = props => {
     //console.log("state: "+props.data.wb);
 
     //for overall stats
-    useEffect(() => {
-        //console.log("statewise: ");
-        if(props.data.statewise==undefined) {
-            //console.log("undefined here");
-        }
-        else {
-        //console.log(props.data.statewise[0])
-        }
-    }, [props.data]);
+    // useEffect(() => {
+    //     //console.log("statewise: ");
+    //     //testing to check the value of 
+    //     // if(props.data.statewise==undefined) {
+    //     //     //console.log("undefined here");
+    //     // }
+    //     // else {
+    //     // //console.log(props.data.statewise[0])
+    //     // }
+    // }, [props.data]);
 
     if(props.data.statewise==undefined) {
-        return (<div>waaiiiit</div>);
+        return (<div>Loading...</div>);
     }
     return (
         <div className="state-data">
