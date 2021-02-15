@@ -53,6 +53,7 @@ body {
   padding-left: 5%;
 }
 .linegraph {
+  margin-top: 1.5vw;
   height: 120%;
   width: 20vw;
 }
@@ -64,6 +65,7 @@ body {
   left: 9.5%;
 }
 .donut-container {
+  margin-top: 1vw;
   position: relative;
 }
 .stat-charts, .databoxes {
@@ -118,6 +120,18 @@ body {
 th {
   color: red;
   padding: 2vh;
+}
+@media only screen and (min-width: 1600px){
+  .donut-chart{
+    height: 10vw;
+    width: 19vw;
+  }
+  .center-text {
+    font-size: 1vw;
+    position: absolute;
+    top: 36%;
+    left: 11.5%;
+  }
 }
 /* donut configs for mobile devices */
 @media only screen and (max-width: 600px) {
