@@ -86,7 +86,15 @@ body {
   width: 45vw;
   height: fit-content;
 }
+.text-on-map {
+  font-weight: bold;
+  color: yellowgreen;
+  position: absolute;
+  top: 26%;
+  left:80%
+}
 .confirmed-box, .active-box, .recovering-box, .deceased-box {
+  font-size: 100%;
   margin-left: 1%;
   margin-bottom: 3%;
   padding: 3.5%;

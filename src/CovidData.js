@@ -18,7 +18,6 @@ function CovidData() {
             fetch("https://api.covid19india.org/states_daily.json")
             .then(stateDataRes => stateDataRes.json())
             .then(stateCovidData => {                
-                setIsLoaded(true);
                 setstateData(stateCovidData.states_daily);//[stateCovidData.states_daily.length - 1]);
                 //console.log("SD: ");
                 //console.log(stateData);
@@ -33,9 +32,11 @@ function CovidData() {
     useEffect(() => {
         fetch("https://api.covid19india.org/data.json")
             .then(covidDatajson => covidDatajson.json())
-            .then(covidDataRes => {
-                setIsLoaded(true);
+            .then(covidDataRes => {                
                 setCovidData(covidDataRes);
+                if(covidData.statewise!=undefined) {
+                    setIsLoaded(true);
+                }                
                 console.log("CD");
                 console.log(covidDataRes);
             },
@@ -43,7 +44,7 @@ function CovidData() {
                     setIsLoaded(true);
                     setError(error);
                 })
-    }, []);
+    }, [covidData.length]);
 
     if (error) {
         return <div>Error: {error.message}</div>;
@@ -67,10 +68,15 @@ function CovidData() {
                     </div>
                 </div>
                 <div className="map-data">
+                <div className="text-on-map">
+                        Last Updated on
+                        <br/>
+                        {covidData.statewise[0].lastupdatedtime}
+                    </div>
                     <Databoxes data={covidData}/>
                     <div className="map">
                         <VectorMap {...India} />
-                    </div>
+                    </div>                    
                 </div>
             </div>
         );
