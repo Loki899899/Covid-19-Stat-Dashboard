@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+import { VectorMap } from '@south-paw/react-vector-maps';
 import StateTable from "./StateTable";
 import DonutChart from './DonutChart';
 import LineGraph from './LineChart';
+import Databoxes from './Databoxes';
+import India from './india.json';
 
 function CovidData() {
     const [covidData, setCovidData] = useState([]);
@@ -9,56 +12,35 @@ function CovidData() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null);
 
-    // useEffect(() => {
-    //     const fetchstateData = () => {
-    //         fetch("https://api.covid19india.org/states_daily.json")
-    //         .then(stateDataRes => stateDataRes.json())
-    //         .then(stateCovidData => {                
-    //             console.log(Object.entries(stateData).map(([key, values]) => stateData.key));
-    //             setstateData(stateCovidData.states_daily[stateCovidData.states_daily.length - 1]);
-    //             console.log(stateData);
-    //             console.log(+stateCovidData.states_daily[stateCovidData.states_daily.length - 1]);
-    //             console.log(Object.entries(stateData).map(([key, values]) => stateData.key));
-    //         },
-    //         error => {
-    //             setIsLoaded(true);
-    //             setError(error);
-    //         })
-    //     }
-    //     if(!isLoaded) {
-    //         fetchstateData();
-    //     }
-    // },[stateData]);
     useEffect(() => {
-        fetch("https://api.covid19india.org/states_daily.json")
-          .then(res => res.json())
-          .then(
-            (result) => {
-              setIsLoaded(true);
-              setstateData(result.states_daily[result.states_daily.length - 1]);
+            fetch("https://api.covid19india.org/states_daily.json")
+            .then(stateDataRes => stateDataRes.json())
+            .then(stateCovidData => {                
+                setIsLoaded(true);
+                setstateData(stateCovidData.states_daily);//[stateCovidData.states_daily.length - 1]);
+                //console.log("SD: ");
+                //console.log(stateData);
             },
-            // Note: it's important to handle errors here
-            // instead of a catch() block so that we don't swallow
-            // exceptions from actual bugs in components.
-            (error) => {
-              setIsLoaded(true);
-              setError(error);
-            }
-          )
-      }, [])
-    // useEffect(() => {
-    //     fetch("https://api.covid19india.org/data.json")
-    //         .then(covidDatajson => covidDatajson.json())
-    //         .then(covidDataRes => {
-    //             setIsLoaded(true);
-    //             setCovidData(covidDataRes.cases_time_series[covidDataRes.cases_time_series.length - 1]);
-    //             // console.log(covidDataRes);
-            // },
-            //     error => {
-            //         setIsLoaded(true);
-            //         setError(error);
-            //     })
-    // }, []);
+            error => {
+                setIsLoaded(true);
+                setError(error);
+            })
+    },[stateData.length]);
+
+    useEffect(() => {
+        fetch("https://api.covid19india.org/data.json")
+            .then(covidDatajson => covidDatajson.json())
+            .then(covidDataRes => {
+                setIsLoaded(true);
+                setCovidData(covidDataRes);
+                console.log("CD");
+                console.log(covidDataRes);
+            },
+                error => {
+                    setIsLoaded(true);
+                    setError(error);
+                })
+    }, []);
 
     if (error) {
         return <div>Error: {error.message}</div>;
@@ -67,20 +49,25 @@ function CovidData() {
         return <div>Loading...</div>;
     } else {
         return (
-            <div>
-                <div className="stat-charts">
-                    <div className="donut-chart">
-                        <DonutChart data={covidData} />
+            <div className="main-container">
+                <div className="chart-and-table">
+                    <div className="stat-charts">
+                        <div className="donut-chart">
+                            <DonutChart data={covidData} />
+                        </div>
+                        <div className="linegraph">
+                            <LineGraph />
+                        </div>
                     </div>
-                    <div className="linegraph">
-                        <LineGraph />
+                    <div className="state-datas">
+                        <StateTable data={covidData} />
                     </div>
                 </div>
-                <div className="state-datas">
-                    <StateTable data={stateData} />
-                    {Object.entries(stateData).map(([key, values]) => {
-                        <div>{key}</div>
-                    })}
+                <div className="map-data">
+                    <Databoxes data={covidData}/>
+                    <div className="map">
+                        <VectorMap {...India} />
+                    </div>
                 </div>
             </div>
         );

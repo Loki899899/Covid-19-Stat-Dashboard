@@ -37,6 +37,15 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-color: cadetblue;
+}
+.stat-charts, .state-datas, .map-data {
+  margin: 2%;
+  background-color: white;
+  border-radius: 2vw;
+}
 /* donut height and width  */
 .donut-chart {
   height: 20vh;
@@ -57,12 +66,58 @@
 .donut-container {
   position: relative;
 }
-.stat-charts {
+.stat-charts, .databoxes {
+  display: flex;
+}
+.chart-and-table {
+  width:50vw;
+  padding-left: 1%;
+}
+.map {
+  padding-left: 8%; 
+  width:40vw;
+}
+.map-data {
+  width: 45vw;
+}
+.confirmed-box, .active-box, .recovering-box, .deceased-box {
+  margin-left: 1%;
+  margin-bottom: 3%;
+  padding: 3.5%;
+  width: 20%;
+}
+.confirmed-box {
+  background-color: crimson;
+  border-radius: 5%;
+  font-weight:bold;
+}
+.active-box {
+  background-color: cyan;
+  border-radius: 5%;
+  font-weight:bold;
+}
+.recovering-box {
+  background-color: springgreen;
+  border-radius: 5%;
+  font-weight:bold;
+}
+.deceased-box {
+  background-color: rgb(139, 120, 119);
+  border-radius: 5%;
+  font-weight:bold;
+}
+.databoxes {
+  height: 10%;
+  text-align: center;
+  padding: 1%;
+  padding-right: 2%;
+}
+.main-container {
   display: flex;
 }
 th {
   color: red;
-  padding: 4vh;
+  padding: 2vh;
 }
 /* donut configs for mobile devices */
 @media only screen and (max-width: 600px) {

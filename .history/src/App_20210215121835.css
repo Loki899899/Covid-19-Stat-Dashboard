@@ -1,0 +1,112 @@
+.App {
+  text-align: center;
+  /* text-align: -webkit-center; */
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* donut height and width  */
+.donut-chart {
+  height: 20vh;
+  width: 20vw;
+  padding-left: 5%;
+}
+.linegraph {
+  height: 120%;
+  width: 20vw;
+}
+.state-datas {
+  width: 50%;
+}
+/* config for text in donut center  */
+.center-text {
+  font-size: 0.8em;
+  position: absolute;
+  top: 34%;
+  left: 9.5%;
+}
+.donut-container {
+  position: relative;
+}
+.stat-charts {
+  display: flex;
+}
+th {
+  color: red;
+  padding: 4vh;
+}
+/* donut configs for mobile devices */
+@media only screen and (max-width: 600px) {
+  .donut-chart{
+    height: 30vw;
+    width: 90vw;
+  }
+  .linegraph {
+    height: 30vw;
+    width: 90vw;
+    margin-top: 12%;
+    margin-bottom: 10%;
+  }
+  .center-text {
+    font-size: 1.2em;
+    position: absolute;
+    top: 36%;
+    left: 12.5%;
+  }
+  .stat-charts {
+    display: block;
+  }
+  th {
+    font-size: 0.78em;
+    color: red;
+    padding: 0.7vw;
+  }
+}
+.confirmed {
+  font-weight:bold;
+  font-size: 1rem;
+}
+/* .donut-inner {
+  margin-top: -32%;
+  margin-bottom: 100px;
+  margin-right: 45%;
+}
+.donut-inner h5 {
+  margin-bottom: 0px;
+  margin-top: 0;
+}
+.donut-inner span {
+  font-size:1vw;
+} */
