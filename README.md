@@ -8,6 +8,11 @@
 ### To be Added
 #### !onMouseHover functionality still needs to be added
 
+## Guide
+1. Clone or extract zip 
+2. Navigate terminal to directory
+3. Run npm start
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
